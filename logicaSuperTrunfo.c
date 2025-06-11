@@ -11,9 +11,11 @@ int main()
     char atributo_escolhido[50];
     float valor_atributo_carta1;
     float valor_atributo_carta2;
-    int valor_atributo_int1;
-    int valor_atributo_int2;
-    char grandeza[50];
+//    int valor_atributo_int1;
+//    int valor_atributo_int2;
+//    char grandeza[50];
+    char valor_com_grandeza_carta1[200];
+    char valor_com_grandeza_carta2[200];
 
     // Declaração das variáveis da carta 1
     char pais_carta1[50]; 
@@ -131,35 +133,44 @@ int main()
             strcpy(atributo_escolhido, "População"); // Atribui o valor(população) à string atributo_escolhido
             valor_atributo_carta1 = populacao_carta1;
             valor_atributo_carta2 = populacao_carta2;
+            sprintf(valor_com_grandeza_carta1, "%d", populacao_carta1);
+            sprintf(valor_com_grandeza_carta2, "%d", populacao_carta2);
             break;
         case 2: 
             strcpy(atributo_escolhido, "Área");
             valor_atributo_carta1 = area_carta1;
             valor_atributo_carta2 = area_carta2;
-            strcpy(grandeza, "Km²");
+            sprintf(valor_com_grandeza_carta1, "%.2f Km²", area_carta1);
+            sprintf(valor_com_grandeza_carta2, "%.2f Km²", area_carta2);
             break;
         case 3: 
             strcpy(atributo_escolhido, "Pib");
             valor_atributo_carta1 = pib_carta1;
             valor_atributo_carta2 = pib_carta2;
-            strcpy(grandeza, "bilhões de reais");
+            sprintf(valor_com_grandeza_carta1, "%.2f bilhões de reais", pib_carta1);
+            sprintf(valor_com_grandeza_carta2, "%.2f bilhões de reais", pib_carta2);
+
             break;
         case 4: 
             strcpy(atributo_escolhido, "Número de pontos turísticos");
             valor_atributo_carta1 = pontos_turisticos_carta1;
             valor_atributo_carta2 = pontos_turisticos_carta2;
+            sprintf(valor_com_grandeza_carta1, "%d", pontos_turisticos_carta1);
+            sprintf(valor_com_grandeza_carta2, "%d", pontos_turisticos_carta2);
             break;
         case 5: 
             strcpy(atributo_escolhido, "Densidade Populacional"); 
             valor_atributo_carta1 = densidade_populacional_carta1;
             valor_atributo_carta2 = densidade_populacional_carta2;
-            strcpy(grandeza, "hab/Km²");
+            sprintf(valor_com_grandeza_carta1, "%.2f hab/Km²", densidade_populacional_carta1);
+            sprintf(valor_com_grandeza_carta2, "%.2f hab/Km²", densidade_populacional_carta2);
             break;
         case 6:
             strcpy(atributo_escolhido, "PIB per capita");
             valor_atributo_carta1 = pib_per_capita_carta1;
             valor_atributo_carta2 = pib_per_capita_carta2;
-            strcpy(grandeza, "reais");
+            sprintf(valor_com_grandeza_carta1, "%.2f reais", pib_per_capita_carta1);
+            sprintf(valor_com_grandeza_carta2, "%.2f reais", pib_per_capita_carta2);
             break;
         default:
             printf("Opção inválida. Tente novamente.\n");
@@ -196,18 +207,13 @@ int main()
 
     printf("\n######### Resultado da comparação de cartas #########\n");
     printf("Atributo escolhido: %s\n\n", atributo_escolhido);
-    if (strcmp(atributo_escolhido, "População") == 0 || strcmp(atributo_escolhido, "Número de pontos turísticos") == 0) {
-        valor_atributo_int1 = (int)valor_atributo_carta1;
-        valor_atributo_int2 = (int)valor_atributo_carta2;
-        printf("Carta 1\nCidade: %s (%s)\n%s: %d\n", cidade_carta1, pais_carta1, atributo_escolhido, valor_atributo_int1);
-        printf("\nCarta 2\nCidade: %s (%s)\n%s: %d\n\n", cidade_carta2, pais_carta2, atributo_escolhido, valor_atributo_int2);
-    } else{
-        printf("Carta 1\nCidade: %s (%s)\n%s: %.2f %s\n", cidade_carta1, pais_carta1, atributo_escolhido, valor_atributo_carta1, grandeza);
-        printf("\nCarta 2\nCidade: %s (%s)\n%s: %.2f %s\n\n", cidade_carta2, pais_carta2, atributo_escolhido, valor_atributo_carta2, grandeza);
-    }
+    printf("Carta 1\nCidade: %s (%s)\n%s: %s\n", cidade_carta1, pais_carta1, atributo_escolhido, valor_com_grandeza_carta1);
+    printf("\nCarta 2\nCidade: %s (%s)\n%s: %s\n\n", cidade_carta2, pais_carta2, atributo_escolhido, valor_com_grandeza_carta2);
     
     //impressão condicionada
-    if (strcmp(atributo_escolhido, "Densidade Populacional") == 0) {
+    if (valor_atributo_carta1 == valor_atributo_carta2){
+        printf("Empate!");
+    } else if (strcmp(atributo_escolhido, "Densidade Populacional") == 0) {
         if (valor_atributo_carta1 < valor_atributo_carta2) {
             printf("Resultado: Carta 1 (%s) venceu!\n", cidade_carta1);
         } else if (valor_atributo_carta1 > valor_atributo_carta2){
@@ -219,11 +225,19 @@ int main()
         } else if (valor_atributo_carta1 < valor_atributo_carta2){
             printf("Resultado: Carta 2 (%s) venceu!\n", cidade_carta2);
         }
-    } 
-    
-    if (valor_atributo_carta1 == valor_atributo_carta2){
-        printf("Empate!");
     }
 
     return 0;
 }
+
+/*
+    if (strcmp(atributo_escolhido, "População") == 0 || strcmp(atributo_escolhido, "Número de pontos turísticos") == 0) {
+        valor_atributo_int1 = (int)valor_atributo_carta1;
+        valor_atributo_int2 = (int)valor_atributo_carta2;
+        printf("Carta 1\nCidade: %s (%s)\n%s: %d\n", cidade_carta1, pais_carta1, atributo_escolhido, valor_atributo_int1);
+        printf("\nCarta 2\nCidade: %s (%s)\n%s: %d\n\n", cidade_carta2, pais_carta2, atributo_escolhido, valor_atributo_int2);
+    } else{
+        printf("Carta 1\nCidade: %s (%s)\n%s: %.2f %s\n", cidade_carta1, pais_carta1, atributo_escolhido, valor_atributo_carta1, grandeza);
+        printf("\nCarta 2\nCidade: %s (%s)\n%s: %.2f %s\n\n", cidade_carta2, pais_carta2, atributo_escolhido, valor_atributo_carta2, grandeza);
+    }
+*/
