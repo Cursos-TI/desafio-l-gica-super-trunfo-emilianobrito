@@ -3,7 +3,7 @@
 
 // Desafio Super Trunfo - Países
 // Tema 2 - Comparação das Cartas
-// Desafio: nível aventureiro
+// Desafio: nível novato
 
 int main()
 {
@@ -43,7 +43,9 @@ int main()
 
     // leitura de dados da Carta 1
     printf("Digite o país da Carta 1: ");
-    scanf("%s", pais_carta1);
+    fgets(pais_carta1, 50, stdin); // A função fgets é usada para ler strings com espaços
+    pais_carta1[strcspn(pais_carta1, "\n")] = 0; /* remove o caractere de nova linha (\n) que fgets pode incluir na variavel de tipo string 
+    evitando erro de impressão de nova linha */
 
     printf("Digite a sigla do estado da Carta 1 (Utilize letras maiúsculas): ");
     scanf("%s", estado_carta1);
@@ -72,7 +74,9 @@ int main()
 
     // leitura de dados da Carta 2
     printf("\nDigite o país da Carta 2: ");
-    scanf("%s", pais_carta2);
+    fgets(pais_carta2, 50, stdin); // A função fgets é usada para ler strings com espaços
+    pais_carta2[strcspn(pais_carta2, "\n")] = 0; /* remove o caractere de nova linha (\n) que fgets pode incluir na variavel de tipo string 
+    evitando erro de impressão de nova linha */
 
     printf("Digite a sigla do estado da Carta 2 (Utilize letras maiúsculas): ");
     scanf("%s", estado_carta2);
@@ -159,6 +163,7 @@ int main()
             break;
         default:
             printf("Opção inválida. Tente novamente.\n");
+            return 0;
     }
 
     // Impressão da Carta 1
