@@ -11,8 +11,8 @@ int main()
     int atributo2;
     char atributo_escolhido1[50];
     char atributo_escolhido2[50];
-    float soma_atributos_carta1;
-    float soma_atributos_carta2 = 0;
+    double soma_atributos_carta1 = 0;
+    double soma_atributos_carta2 = 0;
 //    int valor_atributo_int1;
 //    int valor_atributo_int2;
 //    char grandeza[50];
@@ -177,8 +177,8 @@ int main()
                 }
                 sprintf(valor_atributo1_carta1, "%d", populacao_carta1);
                 sprintf(valor_atributo1_carta2, "%d", populacao_carta2);
-                soma_atributos_carta1 += (float) populacao_carta1;
-                soma_atributos_carta2 += (float) populacao_carta2;
+                soma_atributos_carta1 += (double) populacao_carta1;
+                soma_atributos_carta2 += (double) populacao_carta2;
                 break;
             case 2:
                 strcpy(atributo_escolhido1, "Área"); 
@@ -207,8 +207,8 @@ int main()
                 }       
                 sprintf(valor_atributo1_carta1, "%d", pontos_turisticos_carta1);
                 sprintf(valor_atributo1_carta2, "%d", pontos_turisticos_carta2);
-                soma_atributos_carta1 += (float) pontos_turisticos_carta1;
-                soma_atributos_carta2 += (float) pontos_turisticos_carta2;
+                soma_atributos_carta1 += (double) pontos_turisticos_carta1;
+                soma_atributos_carta2 += (double) pontos_turisticos_carta2;
                 break;
             case 5: 
                 strcpy(atributo_escolhido1, "Densidade Populacional"); 
@@ -243,8 +243,8 @@ int main()
                 }
                 sprintf(valor_atributo2_carta1, "%d", populacao_carta1);
                 sprintf(valor_atributo2_carta2, "%d", populacao_carta2);
-                soma_atributos_carta1 += (float) populacao_carta1;
-                soma_atributos_carta2 += (float) populacao_carta2;
+                soma_atributos_carta1 += (double) populacao_carta1;
+                soma_atributos_carta2 += (double) populacao_carta2;
                 break;
             case 2:
                 strcpy(atributo_escolhido2, "Área"); 
@@ -273,8 +273,8 @@ int main()
                 }       
                 sprintf(valor_atributo2_carta1, "%d", pontos_turisticos_carta1);
                 sprintf(valor_atributo2_carta2, "%d", pontos_turisticos_carta2);
-                soma_atributos_carta1 += (float) pontos_turisticos_carta1;
-                soma_atributos_carta2 += (float) pontos_turisticos_carta2;
+                soma_atributos_carta1 += (double) pontos_turisticos_carta1;
+                soma_atributos_carta2 += (double) pontos_turisticos_carta2;
                 break;
             case 5: 
                 strcpy(atributo_escolhido2, "Densidade Populacional"); 
@@ -304,10 +304,10 @@ int main()
         printf("\n### Atributos escolhidos: %s e %s ###\n\n", atributo_escolhido1, atributo_escolhido2);
         printf("Carta 1\nCidade: %s (%s)\n", cidade_carta1, pais_carta1);
         printf("%s: %s\n%s: %s\n", atributo_escolhido1, valor_atributo1_carta1, atributo_escolhido2, valor_atributo2_carta1);
-        printf("Soma dos atributos da Carta 1: %.2f\n", soma_atributos_carta1);
+        printf("Soma dos atributos da Carta 1: %.2lf\n", soma_atributos_carta1);
         printf("\nCarta 2\nCidade: %s (%s)\n", cidade_carta2, pais_carta2);
         printf("%s: %s\n%s: %s\n", atributo_escolhido1, valor_atributo1_carta2, atributo_escolhido2, valor_atributo2_carta2);
-        printf("Soma dos atributos da Carta 2: %.2f\n\n", soma_atributos_carta2);
+        printf("Soma dos atributos da Carta 2: %.2lf\n\n", soma_atributos_carta2);
         printf("######### Resultado da comparação de cartas #########\n");
 
         if (resultado1 == 1){
